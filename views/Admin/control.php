@@ -19,7 +19,7 @@
             if(isset($_FILES['inputImg'])){
               if($_FILES['inputImg']['error']== 0 && $_FILES["inputImg"]["size"] > 0)
               {
-                $newFileName = str_replace(' ','',$prodName).date('Y-m-d').'.png';
+                $newFileName = str_replace(' ','',$prodName).date('YmdHis').'.png';
                 move_uploaded_file($_FILES['inputImg']['tmp_name'], '../../utilities/media/' . $newFileName);
                 $path='../../utilities/media/' . $newFileName;
                 $sqlCmd="INSERT INTO `products` (`ProductID`, `ProductName`, `Price`, `Discount`, `Amount`, `Description`, `Category`, `Image`) 
@@ -42,7 +42,7 @@
             if(isset($_FILES['inputImg'])){
               if($_FILES['inputImg']['error']== 0 && $_FILES["inputImg"]["size"] > 0)
               {
-                $newFileName = str_replace(' ','',$prodName).date('Y-m-d').'.png';
+                $newFileName = str_replace(' ','',$prodName).date('YmdHis').'.png';
                 move_uploaded_file($_FILES['inputImg']['tmp_name'], '../../utilities/media/' . $newFileName);
                 $path='../../utilities/media/' . $newFileName;
                 $sqlCmd="UPDATE `eproject1`.`products` 
