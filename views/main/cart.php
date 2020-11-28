@@ -2,7 +2,6 @@
 	session_start();
 	// Header
 	include '../../utilities/connectToDatabase.php';
-
 	// Add item to cart 
 	if(isset($_COOKIE['quantity'])){
 		$quantity =  $_COOKIE['quantity'];
@@ -26,7 +25,6 @@
 						"price" => $row['Price'],
 						"amount" => $row['Amount'] - $quantity
 					); 
-			
 			} else {         
 				$message="This product id it's invalid!";            
 			}   

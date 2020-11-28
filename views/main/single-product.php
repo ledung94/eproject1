@@ -13,7 +13,6 @@
             $message="This product id it's invalid!";            
          }   
     }
-    
 ?>
 
 <div class="hero-wrap hero-bread" style="background-image: url('../../templates/main/images/bg_1.jpg');">
@@ -85,7 +84,7 @@
                              </button>
                         </span>
 
-                        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+                        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max=<?php echo $row['Amount'] ?>>
 
                         <span class="input-group-btn ml-2">
                             <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
@@ -102,7 +101,7 @@
                 </div>
 
                 <p>
-                    <a href="/eproject1/views/main/cart.php?action=add&id=<?php echo $row['ProductID'] ?>" class="btn btn-black py-3 px-5">Add to Cart</a>
+                    <a id="addButton" href="/eproject1/views/main/cart.php?action=add&id=<?php echo $row['ProductID'] ?>" class="btn btn-black py-3 px-5">Add to Cart</a>
 
                     <a href="/eproject1/views/main/shop.php" class="btn btn-black py-3 px-5">Back</a>
                 </p>
@@ -204,21 +203,22 @@ include '../../utilities/_main_footer.php';
 ?>
 <script>
       $(document).ready(function () {
-        var quantitiy = 0;
+        var quantitiy = 0;        
+        console.log($("#quantity").attr("max"));
         $(".quantity-right-plus").click(function (e) {
           // Stop acting like a button
           e.preventDefault();
           // Get the field name
           var quantity = parseInt($("#quantity").val());
 
-          // If is not undefined
-
-          $("#quantity").val(quantity + 1);
+          // Increment
+          if(quantity < parseInt($("#quantity").attr("max"))){
+            $("#quantity").val(quantity + 1);
+          }
 
           var quantity = parseInt($("#quantity").val());
 
           document.cookie = "quantity = " + quantity;
-          // Increment
         });
 
         $(".quantity-left-minus").click(function (e) {
@@ -227,12 +227,10 @@ include '../../utilities/_main_footer.php';
           // Get the field name
           var quantity = parseInt($("#quantity").val());
 
-          // If is not undefined
-
-          // Increment
+          // Decrement
           if (quantity > 0) {
             $("#quantity").val(quantity - 1);
-          }
+          } 
 
           var quantity = parseInt($("#quantity").val());
 
