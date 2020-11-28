@@ -84,7 +84,7 @@
                              </button>
                         </span>
 
-                        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max=<?php echo $row['Amount'] ?>>
+                        <input readonly type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max=<?php echo $row['Amount'] ?>>
 
                         <span class="input-group-btn ml-2">
                             <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
@@ -203,8 +203,8 @@ include '../../utilities/_main_footer.php';
 ?>
 <script>
       $(document).ready(function () {
-        var quantitiy = 0;        
-        console.log($("#quantity").attr("max"));
+        var quantitiy = 0; 
+        document.cookie = "quantity = 1";      
         $(".quantity-right-plus").click(function (e) {
           // Stop acting like a button
           e.preventDefault();
