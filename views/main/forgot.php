@@ -13,7 +13,7 @@
             // print_r($resp);
             if(mysqli_num_rows($resp) > 0) {
                 $sql = "  users (UserID, UserName, Password) VALUES ('$userID','$userName','$hashedUserPassword')";
-                $sql = "UPDATE `users` SET `Password`='$userPassword' WHERE UserName = '$userName'";
+                $sql = "UPDATE `users` SET `Password`='$hashedUserPassword' WHERE UserName = '$userName'";
                 $resp = mysqli_query($conn, $sql);
                 header('Location: home.php');
             } else {
